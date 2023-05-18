@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/card1.dart';
-
-import 'card2.dart';
-import 'card3.dart';
+import 'package:fooderlich/screens/explore_screen.dart';
+import 'screens/recipes_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,10 +11,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  static List<Widget> pages = const [
-    Card1(),
-    Card2(),
-    Card3(),
+  static List<Widget> pages = [
+    ExploreScreen(),
+    RecipesScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -32,7 +29,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         title: Text(
           'Fooderlich',
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
       body: pages[_selectedIndex],
@@ -43,19 +40,19 @@ class _HomeState extends State<Home> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.card_giftcard,
+                Icons.explore,
               ),
-              label: "Card"),
+              label: "Explore"),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.card_giftcard,
+                Icons.book,
               ),
-              label: "Card2"),
+              label: "Receipes"),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.card_giftcard,
+                Icons.list,
               ),
-              label: "Card3"),
+              label: "To Buy"),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fooderlich/circle_image.dart';
+import 'package:fooderlich/components/circle_image.dart';
 import 'package:fooderlich/fooderlich_theme.dart';
 
 class AuthorCard extends StatefulWidget {
@@ -48,17 +48,19 @@ class _AuthorCardState extends State<AuthorCard> {
               ),
             ],
           ),
-          IconButton(
-            icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
-            iconSize: 30,
-            color: Colors.red[400],
-            onPressed: () {
-              setState(() {
-                _isFavorited = !_isFavorited;
-              });
-              const snackBar = SnackBar(content: Text('Favorite Pressed'));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
+          Expanded(
+            child: IconButton(
+              icon: Icon(_isFavorited ? Icons.favorite : Icons.favorite_border),
+              iconSize: 30,
+              color: Colors.red[400],
+              onPressed: () {
+                setState(() {
+                  _isFavorited = !_isFavorited;
+                });
+                const snackBar = SnackBar(content: Text('Favorite Pressed'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+            ),
           ),
         ],
       ),
