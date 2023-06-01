@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich/screens/explore_screen.dart';
+import 'screens/grocery_screen.dart';
 import 'screens/recipes_screen.dart';
 
 class Home extends StatefulWidget {
@@ -14,6 +15,7 @@ class _HomeState extends State<Home> {
   static List<Widget> pages = [
     ExploreScreen(),
     RecipesScreen(),
+    const GroceryScreen(),
   ];
 
   void _onItemTapped(int index) {
