@@ -43,6 +43,5 @@ class EmptyGroceryScreen extends StatelessWidget {
         ),
       ),
     );
-    return Container(color: Colors.purple);
   }
 }
