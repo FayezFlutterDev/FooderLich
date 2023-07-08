@@ -20,32 +20,57 @@ class GroceryListScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = groceryItems[index];
 
-          return InkWell(
-            child: GroceryTile(
-                key: Key(item.id),
-                item: item,
-                onComplete: (change) {
-                  if (change != null) {
-                    manager.completeItem(index, change);
-                  }
-                }),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => GroceryItemScreen(
-                    originalItem: item,
-                    onUpdate: (item) {
-                      manager.updateItem(item, index);
-
-                      Navigator.pop(context);
-                    },
-                    onCreate: (item) {},
-                  ),
+          return Dismissible(
+              key: Key(item.id),
+              
+              direction: DismissDirection.endToStart,
+              
+              background: Container(
+                color: Colors.red,
+                alignment: Alignment.centerRight,
+                child: const Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 50.0,
                 ),
-              );
-            },
-          );
+              ),
+              
+              onDismissed: (direction) {
+                
+                manager.deleteItem(index);
+                
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${item.name} dismissed'),
+                  ),
+                );
+              },
+              child: InkWell(
+                child: GroceryTile(
+                    key: Key(item.id),
+                    item: item,
+                    onComplete: (change) {
+                      if (change != null) {
+                        manager.completeItem(index, change);
+                      }
+                    }),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GroceryItemScreen(
+                        originalItem: item,
+                        onUpdate: (item) {
+                          manager.updateItem(item, index);
+
+                          Navigator.pop(context);
+                        },
+                        onCreate: (item) {},
+                      ),
+                    ),
+                  );
+                },
+              ));
         },
         separatorBuilder: (context, index) {
           return const SizedBox(height: 16.0);

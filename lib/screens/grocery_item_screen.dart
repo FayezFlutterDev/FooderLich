@@ -152,7 +152,7 @@ class GroceryItemScreenState extends State<GroceryItemScreen> {
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: _currentColor),
             ),
-            border: UnderlineInputBorder(
+            border: OutlineInputBorder(
               borderSide: BorderSide(color: _currentColor),
             ),
           ),
