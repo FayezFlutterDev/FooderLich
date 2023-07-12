@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../components/grocery_tile.dart';
 import '../models/models.dart';
-import 'grocery_item_screen.dart';
 
 class GroceryListScreen extends StatelessWidget {
   final GroceryManager manager;
@@ -22,9 +22,7 @@ class GroceryListScreen extends StatelessWidget {
 
           return Dismissible(
               key: Key(item.id),
-              
               direction: DismissDirection.endToStart,
-              
               background: Container(
                 color: Colors.red,
                 alignment: Alignment.centerRight,
@@ -34,11 +32,9 @@ class GroceryListScreen extends StatelessWidget {
                   size: 50.0,
                 ),
               ),
-              
               onDismissed: (direction) {
-                
                 manager.deleteItem(index);
-                
+
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('${item.name} dismissed'),
@@ -55,19 +51,11 @@ class GroceryListScreen extends StatelessWidget {
                       }
                     }),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => GroceryItemScreen(
-                        originalItem: item,
-                        onUpdate: (item) {
-                          manager.updateItem(item, index);
-
-                          Navigator.pop(context);
-                        },
-                        onCreate: (item) {},
-                      ),
-                    ),
+                  context.goNamed(
+                    'home',
+                    pathParameters: {
+                      'tab': '${FooderlichTab.toBuy}',
+                    },
                   );
                 },
               ));
