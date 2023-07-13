@@ -4,9 +4,12 @@ import 'package:provider/provider.dart';
 import 'fooderlich_theme.dart';
 import 'models/models.dart';
 import 'navigation/app_router.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(const Duration(seconds: 1));
+  FlutterNativeSplash.remove();
   final appStateManager = AppStateManager();
   await appStateManager.initializeApp();
   runApp(Fooderlich(appStateManager: appStateManager));
