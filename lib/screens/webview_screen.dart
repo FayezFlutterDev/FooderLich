@@ -10,7 +10,7 @@ class WebViewScreen extends StatefulWidget {
 
 class WebViewScreenState extends State<WebViewScreen> {
   final WebViewController _controller = WebViewController();
-  final String url = "https://www.raywenderlich.com/";
+  final String url = "https://www.linkedin.com/in/abdallah-fayez-a7922720a/";
 
   @override
   void initState() {
@@ -22,7 +22,7 @@ class WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('raywenderlich.com'),
+        title: const Text('Linkedin Profile'),
       ),
       body: WebViewWidget(controller: _controller),
     );

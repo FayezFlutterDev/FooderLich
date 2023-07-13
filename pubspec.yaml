@@ -53,8 +53,7 @@ dev_dependencies:
 flutter_native_splash:
   image: assets/fooderlich_assets/rw_logo.png
   color: "#FFFFFF"
-  color_android: "#FFFFFF"
-  color_dark_android: "#212121"
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
