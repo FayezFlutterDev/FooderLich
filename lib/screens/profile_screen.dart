@@ -67,6 +67,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget buildDarkModeRow() {
+    final profileProvider = Provider.of<ProfileManager>(context);
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -74,10 +75,9 @@ class ProfileScreenState extends State<ProfileScreen> {
         children: [
           const Text('Dark Mode'),
           Switch(
-            value: widget.user.darkMode,
+            value:profileProvider.darkMode,
             onChanged: (value) {
-              Provider.of<ProfileManager>(context, listen: false).darkMode =
-                  value;
+              profileProvider.setDarkMode(darkMode: value);
             },
           )
         ],
